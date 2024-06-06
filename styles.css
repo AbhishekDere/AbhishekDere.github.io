@@ -1,77 +1,158 @@
-/* Reset default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    cursor: none; /* Hide the default cursor */
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.cursor {
+    position: absolute;
+    pointer-events: none; /* Make sure the cursor doesn't block interactions */
+    z-index: 10000; /* Ensure it's above other elements */
+    transition: transform 0.1s ease; /* Smooth the movement */
+}
+
+.rounded {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pointed {
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the header */
+    padding: 10px 0; /* Reduced padding */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 1.5rem;
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    margin: 0;
 }
 
-.nav-links {
+header nav {
+    float: right;
+}
+
+header nav ul {
     list-style: none;
-    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-links li {
-    margin-right: 20px;
+header nav ul li {
+    display: inline;
+    margin-left: 10px;
 }
 
-.nav-links a {
-    color: #fff;
+header nav ul li a {
     text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-section {
-    padding: 50px 0;
+header nav ul li a:hover {
+    color: #007BFF;
 }
 
-h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+#hero {
+    background-image: url('images/background.png'); /* Update the path to your image file */
+    background-size: cover; /* Make the background cover the entire area */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    background-attachment: fixed; /* Make the background stay fixed while scrolling */
+    background-position: center; /* Center the background image */
+    height: 100vh; /* Make the hero section take up the full viewport height */
+    text-align: center;
+    color: white;
+    padding-top: 100px; /* Added padding to compensate for the fixed header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 1s;
+}
+
+#hero h2 {
+    font-size: 48px;
+}
+
+#hero p {
+    font-size: 24px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+main {
+    display: none; /* Initially hide the main content */
+    padding-top: 80px;
+    transition: opacity 1s;
+}
+
+.show-content main {
+    display: block; /* Show the main content when the class is added */
+    opacity: 1;
+}
+
+#about, #portfolio, #more-portfolio, #contact {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for sections */
+    margin-top: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+#about.active, #portfolio.active, #more-portfolio.active, #contact.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .portfolio-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    flex: 1 1 calc(33.333% - 40px); /* Adjust the width of portfolio items */
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .portfolio-item img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-}
-
 footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
     padding: 20px 0;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the footer */
 }
